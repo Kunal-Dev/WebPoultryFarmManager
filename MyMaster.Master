@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.master.cs" Inherits="WebPoultryFarmManager.MyMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Style.css" rel="stylesheet" />
+    <script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div style="width:100%;">
+        <table style="width:100%;">
+            <tr>
+                <td colspan="3">
+                    <div style="width:100%;" class="topMenu">
+                        <a href="AddUser.aspx">Add User</a>
+                        <a href="Users.aspx" style="padding-left:10px;">Manage Users</a>
+                        <a href="AddEntry.aspx" style="padding-left:10px;">Add Entry</a>
+                        <a href="ViewEntries.aspx" style="padding-left:10px;">View Entries</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:20%;">
+                    
+                </td>
+                <td style="width:60%;">
+                    <div style="padding-top:30px;">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+                <td style="width:20%;"></td>
+            </tr>
+        </table>
+        
+    </div>
+    </form>
+</body>
+</html>

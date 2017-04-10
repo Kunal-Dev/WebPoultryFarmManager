@@ -1,0 +1,46 @@
+﻿
+.tblAddUser, .tblAddEntry {
+    width:100%;
+}
+
+.tblAddUser .maintitle, .tblAddEntry .maintitle {
+    font-weight:bold;
+    font-size: 25px;
+}
+
+.tblAddUser tr td:nth-child(1), .tblAddEntry tr td:nth-child(1) {
+    text-align:right;
+}
+
+.tblAddUser tr td:nth-child(2) input{
+    width:200px;
+}
+
+.tblAddUser tr td:nth-child(2) select{
+    width:200px;
+}
+
+.tblAddUser tr td:nth-child(2) textarea{
+    width:200px;
+    height:100px;
+}
+
+.txtReadOnly {
+    background-color:lightgray;
+}
+
+.ddl {
+    width: 144px;
+}
+
+.topMenu a {
+    text-decoration: none; border: 1px solid; padding: 5px; border-radius: 4px; font-weight: bold;background-color:#EFF3FB;
+}
+
+.topMenu a:hover {
+    background-color:#507cd1; color:white;
+}
+
+.mainHeading {
+    width:100%; text-align:center;font-weight:bold;font-size: 25px;padding-bottom:15px;
+}
