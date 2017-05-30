@@ -1,35 +1,22 @@
-﻿<%@ Page Title="View Entries" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="ViewEntries.aspx.cs" Inherits="WebPoultryFarmManager.ViewEntries" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="ViewExpenseRecords.aspx.cs" Inherits="WebPoultryFarmManager.ViewExpenseRecords" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="upnlViewEntry" runat="server">
         <ContentTemplate>
-            <div class="mainHeading">View Entries</div>
+            <div class="mainHeading">View Expense Entries</div>
             <div style="width: 100%; text-align: center;">
-                <table style="display: inline;">
+                <table style="width: 50%; display: table;" cellpadding="2" cellspacing="2">
                     <tr>
-                        <td style="vertical-align:top; text-align:left">
-                            <asp:Label ID="lblUserType" runat="server" Text="User Type" Style="font-weight: bold;"></asp:Label>
+                        <td style="text-align:left; width:40%;">
+                            <asp:Label ID="lblExpenseCategoryType" runat="server" Text="Expense Category Type" Style="font-weight: bold;"></asp:Label>
                         </td>
-                        <td style="text-align:left;">
-                            <asp:DropDownList ID="ddlUserType" runat="server" CssClass="ddl" AutoPostBack="true" OnSelectedIndexChanged="ddlUserType_SelectedIndexChanged">
-                                <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
-                                <asp:ListItem Text="Farmer" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Customer" Value="2"></asp:ListItem>
+                        <td style="text-align:left">
+                            <asp:DropDownList ID="ddlExpCat" runat="server" CssClass="ddl">
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align:top; text-align:left">
-                            <asp:Label ID="lblUser" runat="server" Text="User" Style="font-weight: bold;"></asp:Label>
-                        </td>
-                        <td style="text-align:left;">
-                            <asp:DropDownList ID="ddlUsers" runat="server" CssClass="ddl" Enabled="false" AutoPostBack="false">
-                                <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="vertical-align:top; text-align:left">
+                        <td style="vertical-align:top;text-align:left">
                             <asp:Label ID="lblDateRange" runat="server" Text="" style="font-weight:bold;">Select Date</asp:Label>
                         </td>
                         <td style="vertical-align:top;text-align:left">
@@ -52,49 +39,31 @@
                     <tr>
                         <td></td>
                         <td style="text-align:left;">
-                            <asp:Button ID="btnShowRecord" runat="server" Text="Show Entires" OnClick="btnShowRecord_Click" />
+                            <asp:Button ID="btnShowByDate" runat="server" Text="Show Entires" OnClick="btnShowByDate_Click" />
                             <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" style="padding-left:15px;" />
                         </td>
                     </tr>
                 </table>
                 <div style="width: 100%; padding-top: 15px; padding-bottom: 15px;">
-                    <div style="width: 100%; text-align: left; padding-bottom: 15px;">
-                        <asp:Label ID="lblSelectedUser" runat="server" Style="text-align: left; font-weight: bold; font-size: 18px;"></asp:Label><br />
-                        <asp:Label ID="lblTotalBalance" runat="server" Style="text-align: left; font-weight: bold; font-size: 18px;"></asp:Label>
-                    </div>
-                    <asp:GridView ID="gvUserEntries" runat="server" Width="100%" DataKeyNames="Id" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" EmptyDataText="No record found :-(">
+                    <asp:GridView ID="gvExpenseEntries" runat="server" Width="100%" DataKeyNames="Id" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" EmptyDataText="No record found :-(">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderStyle Font-Bold="true" />
                                 <HeaderTemplate>
-                                    User
+                                    Expense
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <span><%#DataBinder.Eval(Container.DataItem, "UserIdSource.FirstName")%> <%#DataBinder.Eval(Container.DataItem, "UserIdSource.LastName")%></span>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <HeaderStyle Font-Bold="true" />
-                                <HeaderTemplate>
-                                    User Type
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <span><%#DataBinder.Eval(Container.DataItem, "UserIdSource.UserTypeSource.Name")%></span>
+                                    <p><%#DataBinder.Eval(Container.DataItem, "ExpenseCatIdSource.Name")%></p>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="Date" HeaderText="Date" />
-                            <asp:BoundField DataField="TotalWeight" HeaderText="Total Weight" />
-                            <asp:BoundField DataField="Pieces" HeaderText="Pieces" />
-                            <asp:BoundField DataField="Price" HeaderText="Price" />
-                            <asp:BoundField DataField="TotalPrice" HeaderText="Total Price" />
-                            <asp:BoundField DataField="PreviousBalance" HeaderText="Previous Balance" />
-                            <asp:BoundField DataField="Paid" HeaderText="Amount Paid" />
-                            <asp:BoundField DataField="TotalBalance" HeaderText="Total Balance" />
+                            <asp:BoundField DataField="Cost" HeaderText="Cost" />
                             <asp:BoundField DataField="Description" HeaderText="Description" />
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btnDeleteEntry" runat="server" OnClick="btnDeleteEntry_Click" OnClientClick="return ConfirmDelete();" Text="Delete" />
+                                    <a style="text-decoration:none;" href="AddEditExpenseRecord.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Id")%>" ><input type="button" name="edit" value="Edit" /></a>
+                                    <asp:Button ID="btnDeleteEntry" runat="server" OnClientClick="return ConfirmDelete();" Text="Delete" OnClick="btnDeleteEntry_Click" style="padding-left:5px;" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -132,13 +101,24 @@
 
             if (dateError != "")
                 alert(dateError);
-        }
 
+            //if (dateError != "" && dateError == "StartDateExceedNow")
+            //    alert("Start date cannot be greater than today date");
+            //else if (dateError != "" && dateError == "EndDateExceedNow")
+            //    alert("End date cannot be greater than today date");
+            //else if (dateError != "" && dateError == "InvalidStartDate")
+            //    alert("Invalid Start date");
+            //else if (dateError != "" && dateError == "InvalidEndDate")
+            //    alert("Invalid End date");
+            //else if (dateError != "" && dateError == "StartDateCannotBeGreater")
+            //    alert("Start date cannot be greater then end date");
+        }
 
         function showhidecalendar(type) {
             if (type == "start") {
                 $('#<%=calStartDate.ClientID%>').show();
             }
+            
         }
     </script>
 </asp:Content>

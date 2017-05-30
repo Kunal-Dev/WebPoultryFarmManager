@@ -20,20 +20,25 @@
                         <a href="Users.aspx" style="padding-left:10px;">Manage Users</a>
                         <a href="AddEntry.aspx" style="padding-left:10px;">Add Entry</a>
                         <a href="ViewEntries.aspx" style="padding-left:10px;">View Entries</a>
+                        <a href="AddExpenseCategory.aspx" style="padding-left:10px;">Add Expense Category</a>
+                        <a href="ViewExpenseCategories.aspx" style="padding-left:10px;">Manage Expense Categories</a>
+                        <a href="AddEditExpenseRecord.aspx" style="padding-left:10px;">Add Expense Entry</a>
+                        <a href="ViewExpenseRecords.aspx" style="padding-left:10px;">View Expenses</a>
+                        <a href="PaymentReceived.aspx" style="padding-left:10px;">Payment Received</a>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="width:20%;">
+                <td style="width:15%;">
                     
                 </td>
-                <td style="width:60%;">
+                <td style="width:70%;">
                     <div style="padding-top:30px;">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
                 </td>
-                <td style="width:20%;"></td>
+                <td style="width:15%;"></td>
             </tr>
         </table>
         
